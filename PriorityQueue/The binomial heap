@@ -1,0 +1,73 @@
+struct HeapStrcut ;
+typedef struct HeapStruct *PriorityQueue ;
+
+PriorityQueue Intialize(int MaxElement) ;
+void Destory(PriorityQueue H) ;
+void MakeEmpty(PriorityQueue H) ;
+void Insert(ElementType X, PriorityQueue H) ;
+ElementType DeleteMin(PriotityQueue H) ;
+ElementType Find(PritityQueue H) ;
+int IsEmpty(PriorityQueue H) ;
+int IsFull(PriorityQueue H) ;
+
+srtuct HeapStruct
+{
+    int Capacity ;
+    int Size l
+    ElementType *Elements ;
+}
+
+
+PriorityQueue Intialize(int MaxElement)
+{
+    PriorityQueue H ;
+    H->Elements = malloc((MaxElement + 1) * sizeof(ElementType) ;
+    if(H->Elements == NULL)
+        FatalError("内存不足");
+    H->Capacity = MaxElement ; 
+    H->Size = 0;
+    H->Elements[0] = MinData ;//在根节点赋一个绝对的小的值
+    
+    return H ;
+}
+
+void Insert(ElementType X, PriorityQueue H)
+{
+    int i ;
+    if(IsFull(H))
+        Error("堆满") ；
+    
+    for(i = ++H->Size;H->Elements[i/2] > X;i/2)
+        H->Elenemts[i] = H->Elements[i/2] ;
+    H->Elements[i] = X ;
+    
+    return H ;
+}
+
+ElementType Insert(PriorityQueue H)
+{
+
+    int i,Child ;
+    ElementType MinElement,LastElement ;
+    
+    if(IsEmpty(H))
+    {
+        Error("堆为空") ；
+        return H->Elements[0] ;
+    }
+    MinElement = H->Elements[1];
+    LastElement = H->Elements[H->Size--] ;
+    for(i = 1; i * 2 <= H->Size;i = Child)
+    {
+        Child = i * 2;
+        if(Child != H->Size && H->Element[Child] > H->Elements[Child + 1])
+            Child ++ ;
+            
+        if(LastElement > H->Elements[Child)
+            H->Elements[i] = H->Elements[Child] ;
+        else break ;
+    }
+    H->Elements[i] = LastElement ;
+    
+    return MinElenemt;
+}
